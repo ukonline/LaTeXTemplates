@@ -1,0 +1,70 @@
+% sql.tex
+% 
+% SQL listings template
+% French document, A4 paper
+% Author: Sébastien Combéfis
+% Version: May 14, 2016
+
+\documentclass[a4paper]{article}
+
+\usepackage[latin1]{inputenc} % can be changed to utf8x
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+\usepackage{vmargin}
+\usepackage{color}
+\usepackage{listings}
+
+% Definition of SQL language
+\definecolor{stringcolorA}{rgb}{0.15,0.46,0.33}
+\definecolor{stringcolorB}{rgb}{0.9,0.1,0}
+\lstdefinelanguage{sqlang}
+{morekeywords=[1]{CREATE,TABLE,INSERT,INTO,VALUES,DOMAIN,DEFAULT,PRIMARY,KEY,UNIQUE,NOT,NULL,DROP,SELECT,FROM,WHERE,ORDER,BY,ASC,DESC,DISTINCT,IN,BETWEEN,AND,LIKE,OR,NOT,AS,UPDATE,SET,DELETE,IS,ESCAPE,FOREIGN,REFERENCES,SMALLINT},
+morekeywords=[2]{VARCHAR,INT,DATE,NUMERIC},
+morekeywords=[3]{CURRENT_DATE,ROUND,CAST,CONCAT,EXTRACT,CURRENT_TIME,COUNT,MAX},
+morekeywords=[4]{},
+morecomment=[l]{--},
+morecomment=[s]{/*}{*/},
+morestring=[b][\color{stringcolorA}]{`},
+morestring=[b][\color{stringcolorB}]{'},}[keywords,comments,strings,directives]
+
+% Listing style
+\lstset{basicstyle=\fontsize{7}{8}\selectfont\tt}
+\lstset{keywordstyle=[1]\color[rgb]{0,0,1}\bfseries}
+\lstset{keywordstyle=[2]\color[rgb]{0.6,0,0}\bfseries}
+\lstset{keywordstyle=[3]\color[rgb]{0,0.6,0}\bfseries}
+\lstset{keywordstyle=[4]\color{orange}\bfseries}
+\lstset{keywordstyle=[5]\color[rgb]{0.463,0.294,0.557}\bfseries}
+\lstset{directivestyle=\color[rgb]{0.314,0.40,0.565}\bfseries}
+\lstset{identifierstyle=\color{black}}
+\lstset{commentstyle=\color[rgb]{0,0.6,0.6}}
+\lstset{stringstyle=\color[rgb]{0.44,0.47,1}}
+\lstset{stringstyle=\color[rgb]{0.44,0.47,1}}
+\lstset{showstringspaces=false,showtabs=false,tabsize=3,extendedchars=true,breaklines=true,postbreak={},breakautoindent=true,breakindent=0pt}
+\lstset{frame=shadowbox,rulecolor=\color[gray]{.2},rulesepcolor=\color[gray]{.75},framesep=2pt,backgroundcolor=\color[rgb]{1,1,0.9}}
+\lstset{xleftmargin=0.1cm,xrightmargin=1mm,aboveskip=0.5cm,belowskip=0cm}
+\lstset{captionpos=b,numbers=left,numberstyle=\tiny,columns=fixed,escapechar=§}
+\lstset{language=sqlang}
+
+\begin{document}
+
+\begin{lstlisting}
+-- Create the purchase table
+CREATE TABLE purchase (
+  id INT NOT NULL AUTO_INCREMENT,
+  client VARCHAR(20) NOT NULL,
+  product VARCHAR(4) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- Populate the purchase table
+INSERT INTO purchase (`client`, `product`) VALUES ('Sébastien', 'SQL 101');
+
+-- Execute some queries
+SELECT * FROM purchase WHERE client='Sébastien' AND product='SQL 101';
+
+SELECT CONCAT (client, ' buy ', product) AS sentence FROM purchase;
+\end{lstlisting}
+
+\end{document}
