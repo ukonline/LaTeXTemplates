@@ -1,0 +1,82 @@
+% python.tex
+% 
+% Python listings template
+% French document, A4 paper
+% Author: Sébastien Combéfis
+% Version: May 15, 2016
+
+\documentclass[a4paper]{article}
+
+\usepackage[latin1]{inputenc} % can be changed to utf8x
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+\usepackage{vmargin}
+\usepackage{color}
+\usepackage{listings}
+
+% Definition of colours
+\definecolor{orange}{rgb}{1,0.5,0}
+
+% Definition of Python language
+\lstdefinelanguage{python}
+{morekeywords=[1]{import,from,False,True,and,or,not,if,else,elif,while,break,continue,def,return,global,in,None,for,class,is,try,except,pass,assert,lambda,raise,yield,nonlocal,with,as,cdef,extern},
+morekeywords=[2]{complex,str,int,set,dict,frozenset,list,float},
+morekeywords=[3]{print,type,sqrt,input,sin,len,del,range,namedtuple,radians,chr,isinstance,zip,map,filter,sum,all,any,iter,next,callable,open},
+morekeywords=[4]{@property},
+morekeywords=[5]{OSError,StopIteration,IndexError,ValueError,IOError},
+morestring=[b]{"},
+morestring=[b]{'},
+morestring=[b]{"""},
+morecomment=[l]{\#},}[keywords,comments,strings,directives]
+
+% Listing style
+\lstset{basicstyle=\fontsize{7}{8}\selectfont\tt}
+\lstset{keywordstyle=[1]\color[rgb]{0,0,1}\bfseries}
+\lstset{keywordstyle=[2]\color[rgb]{0.6,0,0}\bfseries}
+\lstset{keywordstyle=[3]\color[rgb]{0,0.6,0}\bfseries}
+\lstset{keywordstyle=[4]\color{orange}\bfseries}
+\lstset{keywordstyle=[5]\color[rgb]{0.463,0.294,0.557}\bfseries}
+\lstset{directivestyle=\color[rgb]{0.314,0.40,0.565}\bfseries}
+\lstset{identifierstyle=\color{black}}
+\lstset{commentstyle=\color[rgb]{0,0.6,0.6}}
+\lstset{stringstyle=\color[rgb]{0.44,0.47,1}}
+\lstset{stringstyle=\color[rgb]{0.44,0.47,1}}
+\lstset{showstringspaces=false,showtabs=false,tabsize=3,extendedchars=true,breaklines=true,postbreak={},breakautoindent=true,breakindent=0pt}
+\lstset{frame=shadowbox,rulecolor=\color[gray]{.2},rulesepcolor=\color[gray]{.75},framesep=2pt,backgroundcolor=\color[rgb]{1,1,0.9}}
+\lstset{xleftmargin=0.1cm,xrightmargin=1mm,aboveskip=0.5cm,belowskip=0cm}
+\lstset{captionpos=b,numbers=left,numberstyle=\tiny,columns=fixed,escapechar=§}
+\lstset{language=python}
+
+\begin{document}
+
+\begin{lstlisting}
+# Class representing an item
+class Item:
+    def __init__(self, barcode, name, price):
+        self.__barcode = barcode
+        self.__name = name
+        self.__price = price
+    
+    @property
+    def name(self):
+        return name
+    
+    def __str__(self):
+        return '{} ({:.2f} euros)'.format(self.__name, self.__price)
+
+
+# Creates a new item from user's inputs
+if __name__ == '__main__':
+    barcode = input('Barcode? ')
+    name = input('Name? ')
+    price = input('Price? ')
+    try:
+        item = Item(int(barcode), name, float(price))
+        print(item)
+    except ValueError:
+        pass
+\end{lstlisting}
+
+\end{document}
