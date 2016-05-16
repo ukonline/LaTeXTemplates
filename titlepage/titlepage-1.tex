@@ -1,0 +1,38 @@
+% titlepage-1.tex
+% 
+% Title page
+% French document, A4 paper
+% Author: Sébastien Combéfis
+% Version: May 16, 2016
+
+\documentclass[a4paper]{article}
+
+\usepackage[latin1]{inputenc} % can be changed to utf8x
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+\usepackage{vmargin}
+
+% Informations about the document
+% Mandatory
+\def\title{LSINF1102 \\[2mm] Résolution informatique de problèmes}
+\def\authors{Sébastien Combéfis \\ Virginie Van den Schrieck}
+% Optional
+\def\subtitle{Rapport Projet P2}
+\def\group{Groupe P2.AVO.01}
+
+\begin{document}
+
+\begin{titlepage}
+	\today \\[7cm]
+	\begin{flushright}\sf\Huge
+	{\bfseries \title} \\[3mm]
+	\ifdefined\subtitle {\huge \subtitle} \fi
+	\end{flushright}
+	\ \vfill
+	\noindent\ifdefined\group \textbf{\group} \\ \fi
+	\authors
+\end{titlepage}
+
+\end{document}
