@@ -1,0 +1,44 @@
+% titlepage-1.tex
+% 
+% Title page
+% French document, A4 paper
+% Author: Sébastien Combéfis
+% Version: May 16, 2016
+
+\documentclass[a4paper]{article}
+
+\usepackage[latin1]{inputenc} % can be changed to utf8x
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+\usepackage{vmargin}
+\usepackage{graphicx}
+
+% Informations about the document
+% Mandatory
+\def\title{De la grassitude alimentaire}
+\def\authors{Quentin Lurkin et Clémence Flémal}
+% Optional
+\def\subtitle{Le pouvoir du gras}
+\def\group{Groupe 12}
+
+\begin{document}
+
+\begin{titlepage}
+	\begin{center}
+	\ \vspace{2cm} \\
+	\textbf{\huge \title}
+	\ifdefined\subtitle \\[6mm] {\Large \subtitle} \\ \fi
+	\vspace{2cm}
+	\authors
+	\ifdefined\group \\[2mm] (\group) \\ \fi
+	\vspace{2cm}
+	% https://www.flickr.com/photos/stuart_spivack/4622081054
+	\includegraphics[width=12cm]{images/4622081054_2bee2cfb95_z.jpg} \\
+	\vfill
+	\today
+	\end{center}
+\end{titlepage}
+
+\end{document}
